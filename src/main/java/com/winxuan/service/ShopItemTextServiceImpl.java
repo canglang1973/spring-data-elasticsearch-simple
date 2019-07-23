@@ -76,6 +76,7 @@ public class ShopItemTextServiceImpl implements ShopItemTextService {
         return shopItemTexts;
     }
 
+    @Override
     public List<ShopItemText> findByShopItemTextByStream(int page, int pageSize) {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withIndices("shop_item_text")
@@ -90,5 +91,16 @@ public class ShopItemTextServiceImpl implements ShopItemTextService {
             shopItemTexts.add(stream.next());
         }
         return shopItemTexts;
+    }
+
+    @Override
+    public long countShopItemText() {
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.matchPhraseQuery("text", "编:(加)泰德.纳斯密斯"))
+                .withIndices(ShopItemText.INDEX)
+                .withTypes("doc")
+                .build();
+        long count = elasticsearchTemplate.count(searchQuery);
+        return count;
     }
 }

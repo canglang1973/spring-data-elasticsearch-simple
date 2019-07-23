@@ -32,4 +32,10 @@ public class ShopItemTextServiceImplTest {
         List<ShopItemText> byShopItemTextByScroll = shopItemTextService.findByShopItemTextByScroll(0, 10);
         System.out.println(byShopItemTextByScroll);
     }
+
+    @Test
+    public void countShopItemText(){
+        long l = shopItemTextService.countShopItemText();
+        System.out.println();
+    }
 }

@@ -24,4 +24,8 @@ public interface ShopItemTextService {
     List<ShopItemText> findByShopItemTextByPage(int pageNo,int pageSize);
 
     List<ShopItemText> findByShopItemTextByScroll(int pageNo,int pageSize);
+
+    List<ShopItemText> findByShopItemTextByStream(int page, int pageSize);
+
+    long countShopItemText();
 }
