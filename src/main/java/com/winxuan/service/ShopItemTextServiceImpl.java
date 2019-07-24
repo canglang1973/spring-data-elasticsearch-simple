@@ -96,7 +96,7 @@ public class ShopItemTextServiceImpl implements ShopItemTextService {
     @Override
     public long countShopItemText() {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(QueryBuilders.matchPhraseQuery("text", "编:(加)泰德.纳斯密斯"))
+                .withQuery(QueryBuilders.matchPhraseQuery("type", "DESC"))
                 .withIndices(ShopItemText.INDEX)
                 .withTypes("doc")
                 .build();

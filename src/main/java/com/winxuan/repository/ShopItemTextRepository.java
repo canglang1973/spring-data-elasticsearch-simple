@@ -2,7 +2,8 @@ package com.winxuan.repository;
 
 import com.winxuan.model.ShopItemText;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author leitao.
@@ -16,7 +17,10 @@ import org.springframework.stereotype.Repository;
  *   第二个泛型为Bean的主键类型
  *
  **/
-@Repository
 public interface ShopItemTextRepository extends ElasticsearchRepository<ShopItemText,String> {
-//    ShopItemText findByShopItemText(String id);
+
+    ShopItemText findByProductsaleidAndType(Long productsaleid,String type);
+
+    List<ShopItemText> findByProductsaleid(Long productsaleid);
+
 }

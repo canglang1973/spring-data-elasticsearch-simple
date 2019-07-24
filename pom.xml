@@ -37,10 +37,15 @@
                     <artifactId>transport-netty4-client</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>transport</artifactId>
-                    <groupId>org.elasticsearch.client</groupId>
+                    <groupId>org.springframework.data</groupId>
+                    <artifactId>spring-data-commons</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>2.1.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.elasticsearch</groupId>

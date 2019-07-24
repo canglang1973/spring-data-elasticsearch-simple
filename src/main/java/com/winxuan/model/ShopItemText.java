@@ -35,7 +35,7 @@ public class ShopItemText implements Serializable {
     //@Id 文档主键 唯一标识
     @Id
     //@Field 每个文档的字段配置（类型、是否分词、是否存储、分词器 ）
-    @Field(store = true, index = false, type = FieldType.Text)
+    @Field(store = false, index = false, type = FieldType.Text)
     private String id;
 
     @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Long)
