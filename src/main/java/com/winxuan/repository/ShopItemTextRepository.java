@@ -3,6 +3,7 @@ package com.winxuan.repository;
 import com.winxuan.model.ShopItemText;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,5 +23,7 @@ public interface ShopItemTextRepository extends ElasticsearchRepository<ShopItem
     ShopItemText findByProductsaleidAndType(Long productsaleid,String type);
 
     List<ShopItemText> findByProductsaleid(Long productsaleid);
+
+    List<ShopItemText> findByTsBetween(String start,String end);
 
 }

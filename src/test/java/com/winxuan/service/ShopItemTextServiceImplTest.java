@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,5 +40,13 @@ public class ShopItemTextServiceImplTest {
     public void countShopItemText(){
         long l = shopItemTextService.countShopItemText();
         System.out.println();
+    }
+
+    @Test
+    public void findByTsBetween() throws ParseException {
+        Date start = SimpleDateFormat.getDateTimeInstance().parse("2019-07-15 02:59:13");
+        Date end = SimpleDateFormat.getDateTimeInstance().parse("2019-07-15 02:59:15");
+        List<ShopItemText> byTsBetween = shopItemTextService.findByTsBetween(start, end);
+        System.out.println(byTsBetween);
     }
 }

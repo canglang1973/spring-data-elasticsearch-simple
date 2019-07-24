@@ -2,6 +2,7 @@ package com.winxuan.service;
 
 import com.winxuan.model.ShopItemText;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,4 +29,6 @@ public interface ShopItemTextService {
     List<ShopItemText> findByShopItemTextByStream(int page, int pageSize);
 
     long countShopItemText();
+
+    List<ShopItemText> findByTsBetween(Date start, Date end);
 }

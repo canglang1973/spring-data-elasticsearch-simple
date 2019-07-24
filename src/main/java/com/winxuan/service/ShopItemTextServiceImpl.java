@@ -2,15 +2,12 @@ package com.winxuan.service;
 
 import com.winxuan.model.ShopItemText;
 import com.winxuan.repository.ShopItemTextRepository;
+import com.winxuan.support.Constants;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.index.query.MatchAllQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.ScrolledPage;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
@@ -18,9 +15,9 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.util.CloseableIterator;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author leitao.
@@ -103,4 +100,16 @@ public class ShopItemTextServiceImpl implements ShopItemTextService {
         long count = elasticsearchTemplate.count(searchQuery);
         return count;
     }
+
+    @Override
+    public List<ShopItemText> findByTsBetween(Date start, Date end) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.ES_DATEFORMAT_PATTERN);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(Constants.UTC_TIME_ZONE));
+        String startStr = simpleDateFormat.format(start);
+        String endStr = simpleDateFormat.format(end);
+        List<ShopItemText> byTsBetween = shopItemTextRepository.findByTsBetween(startStr, endStr);
+        return byTsBetween;
+    }
+
+
 }

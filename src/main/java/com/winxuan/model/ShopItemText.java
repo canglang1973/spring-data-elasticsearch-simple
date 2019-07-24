@@ -53,10 +53,10 @@ public class ShopItemText implements Serializable {
     @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Text)
     private String type;
 
-    @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Date)
+    @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Date,pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;
 
-    @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Date)
+    @Field(index = true, analyzer = "ik_smart", store = true, searchAnalyzer = "ik_smart", type = FieldType.Date,pattern = "yyyy-MM-dd HH:mm:ss")
     private Date ts;
 
 }
